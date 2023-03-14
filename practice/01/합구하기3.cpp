@@ -38,7 +38,7 @@ int main()
 	int n;
 	scanf("%d", &n);
 
-	long long answer = getAnswer(n);
+	long long answer = getAnswer(n); // long long : 8바이트
 	printf("%lld\n", answer);
 
 	return 0;

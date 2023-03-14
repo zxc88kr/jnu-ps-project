@@ -17,17 +17,16 @@ void printIndexes(std::string school[], int n)
 	for (int i = 0; i < n; i++)
 		if (school[i] == "AJOU")
 		{
-			if (first == -1) first = i + 1; // first는 제일 처음 발견된 한 번만 업데이트
+			if (first == -1) first = i + 1; // first는 처음 발견된 한 번만 업데이트
 			last = i + 1; // last는 발견될 때마다 업데이트
 		}
-		
 	printf("%d %d\n", first, last);
 }
 
 int main()
 {
 	int n;
-	char buff[11];
+	char buff[11]; // 소속 학교명은 10글자 이하
 	std::string* school;
 
 	scanf("%d", &n);

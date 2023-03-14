@@ -54,7 +54,7 @@ int main()
 
 	for (int i = 0; i < n; i++)
 	{
-		if (i > 0) printf(" ");
+		if (i > 0) printf(" "); // 각 데이터는 공백으로 구분
 		printf("%d", data[i]);
 	}
 	printf("\n");
