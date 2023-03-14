@@ -1,3 +1,7 @@
+// 문제해결프로젝트 실습 01 (1)
+// 학번 : 195443
+// 이름 : 박찬
+
 #include <cstdio>
 
 void solve(int data[], int n, int p, int q)
