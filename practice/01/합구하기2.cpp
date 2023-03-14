@@ -13,7 +13,8 @@
  */
 void solve(int data[], int n, int p, int q)
 {
-	int count = 0, weight_sum = 0;
+	int count = 0; // 탑승 가능한 멤버의 수
+	int weight_sum = 0; // 탑승 가능한 멤버의 몸무게 총합
 	for (int i = 0; i < n; i++)
 		if (data[i] <= p)
 		{

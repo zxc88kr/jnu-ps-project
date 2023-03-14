@@ -12,14 +12,15 @@
  */
 void printIndexes(std::string school[], int n)
 {
-	int first = -1, last = -1;
+	int first = -1; // 처음으로 발견된 데이터의 인덱스를 -1로 초기화
+	int last = -1; // 마지막으로 발견된 데이터의 인덱스를 -1로 초기화
 	for (int i = 0; i < n; i++)
 		if (school[i] == "AJOU")
 		{
-			if (first == -1) first = i + 1;
-			last = i + 1;
+			if (first == -1) first = i + 1; // first는 제일 처음 발견된 한 번만 업데이트
+			last = i + 1; // last는 발견될 때마다 업데이트
 		}
-
+		
 	printf("%d %d\n", first, last);
 }
 

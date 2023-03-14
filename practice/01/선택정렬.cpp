@@ -30,8 +30,10 @@ void selectionSort(int data[], int n)
 {
 	for (int i = 0; i < n; i++)
 	{
+		// 주어진 범위에서 최소값의 인덱스를 찾음
 		int minIndex = getMinIndexInRange(data, n, i, n - 1);
 		
+		// 최소값의 인덱스와 i번째 인덱스의 값을 서로 교환
 		int temp = data[minIndex];
 		data[minIndex] = data[i];
 		data[i] = temp;

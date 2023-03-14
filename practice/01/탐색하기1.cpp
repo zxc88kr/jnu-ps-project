@@ -13,7 +13,7 @@
  */
 int findIndex(int data[], int n, int m)
 {
-	int index = -1;
+	int index = -1; // 존재하지 않는 경우를 대비하여 -1로 초기화
 	for (int i = 0; i < n; i++)
 		if (data[i] == m)
 		{

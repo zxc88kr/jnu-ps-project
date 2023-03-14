@@ -27,7 +27,7 @@ long long getAnswer(int n)
 	long answer = 0;
 	for (int i = 1; i <= n; i++)
 	{
-		int rangeSum = getRangeSumFromOne(i);
+		int rangeSum = getRangeSumFromOne(i); // (1 + ... + i)
 		answer += rangeSum;
 	}
 	return answer;

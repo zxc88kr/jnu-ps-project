@@ -13,17 +13,18 @@
  */
 int findIndex(int data[], int n)
 {
-	int sum = 0, x = 0;
+	int x = 0; // 데이터의 인덱스를 0으로 초기화
+	int sum = 0; // 배열의 총합
 	for (int i = 0; i < n; i++)
 		sum += data[i];
 
 	for (int i = 0; i < n; i++)
 	{
-		int dx = abs(n * data[x] - sum);
-		int di = abs(n * data[i] - sum);
-		if (dx > di) x = i;
+		int dx = abs(n * data[x] - sum); // 이전 원소들과 평균과의 최단 거리
+		int di = abs(n * data[i] - sum); // 현재 원소와 평균과의 거리
+		if (di < dx) x = i;
 	}
-	return x + 1;
+	return x + 1; // 실제 번호는 1부터 시작
 }
 
 int main()
@@ -37,7 +38,7 @@ int main()
 		scanf("%d", &data[i]);
 	
 	int answer = findIndex(data, n);
-	printf("%d %d\n", answer, data[answer - 1]);
+	printf("%d %d\n", answer, data[answer - 1]); // 인덱스는 0부터 시작
 
 	delete[] data;
 	return 0;
