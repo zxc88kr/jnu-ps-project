@@ -5,6 +5,12 @@
 #include <cstdio>
 #include <cmath>
 
+/**
+ * 배열의 평균과 가장 가까운 값의 인덱스를 찾는 함수
+ * @param data 정수 배열 data[0] ~ data[n - 1]
+ * @param n    배열의 크기
+ * @return 	   평균과 가장 가까운 값의 인덱스를 반환 (여러 개라면 가장 빠른 인덱스)
+ */
 int findIndex(int data[], int n)
 {
 	int sum = 0, x = 0;

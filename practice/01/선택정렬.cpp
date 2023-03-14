@@ -4,6 +4,14 @@
 
 #include <cstdio>
 
+/**
+ * 주어진 범위에서 최소값의 인덱스를 반환하는 함수
+ * @param data 	정수 배열 data[0] ~ data[n - 1]
+ * @param n 	배열의 크기
+ * @param begin 탐색할 배열의 시작 인덱스
+ * @param end 	탐색할 배열의 종료 인덱스
+ * @return 		data[begin] ~ data[end] 중 최소값의 인덱스를 반환
+ */
 int getMinIndexInRange(int data[], int n, int begin, int end)
 {
 	int index = begin;
@@ -13,6 +21,11 @@ int getMinIndexInRange(int data[], int n, int begin, int end)
 	return index;
 }
 
+/**
+ * 주어진 배열을 선택 정렬하는 함수
+ * @param data 정수 배열 data[0] ~ data[n - 1]
+ * @param n    배열의 크기
+ */
 void selectionSort(int data[], int n)
 {
 	for (int i = 0; i < n; i++)

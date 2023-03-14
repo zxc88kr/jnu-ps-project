@@ -5,6 +5,11 @@
 #include <cstdio>
 #include <string>
 
+/**
+ * 배열에서 소속 학교명이 "AJOU"인 처음과 마지막 데이터의 인덱스를 출력하는 함수
+ * @param school 학생들의 소속 학교명 배열 school[0] ~ school[n - 1]
+ * @param n 	 학생들의 수
+ */
 void printIndexes(std::string school[], int n)
 {
 	int first = -1, last = -1;

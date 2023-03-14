@@ -4,6 +4,11 @@
 
 #include <cstdio>
 
+/**
+ * (1 + ... + n) 의 결과를 반환하는 함수
+ * @param i 반복문 종료 인덱스
+ * @return 	(1 + ... + i) 의 결과를 반환
+ */
 int getRangeSumFromOne(int i)
 {
 	int answer = 0;
@@ -12,6 +17,11 @@ int getRangeSumFromOne(int i)
 	return answer;
 }
 
+/**
+ * (1) + (1 + 2) + (1 + ... + n) 의 결과를 반환하는 함수
+ * @param n 반복문 종료 인덱스
+ * @return 	(1) + (1 + 2) + (1 + ... + n) 의 결과를 반환
+ */
 long long getAnswer(int n)
 {
 	long answer = 0;

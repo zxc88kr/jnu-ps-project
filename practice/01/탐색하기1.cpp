@@ -4,6 +4,13 @@
 
 #include <cstdio>
 
+/**
+ * 배열에서 특정 원소의 인덱스를 찾는 함수
+ * @param data 중복 없는 정수 배열 data[0] ~ data[n - 1]
+ * @param n    배열의 크기
+ * @param m    배열에서 찾고자 하는 원소
+ * @return 	   특정 원소가 존재하면 해당 인덱스를, 존재하지 않으면 -1을 반환
+ */
 int findIndex(int data[], int n, int m)
 {
 	int index = -1;
