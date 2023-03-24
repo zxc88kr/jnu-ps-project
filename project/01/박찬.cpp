@@ -1,51 +1,51 @@
-// ë¬¸ì œí•´ê²°í”„ë¡œì íŠ¸ í”„ë¡œì íŠ¸ 01
-// í•™ë²ˆ : 195443
-// ì´ë¦„ : ë°•ì°¬
+// ¹®Á¦ÇØ°áÇÁ·ÎÁ§Æ® ÇÁ·ÎÁ§Æ® 01
+// ÇÐ¹ø : 195443
+// ÀÌ¸§ : ¹ÚÂù
 
-#include <cstdio> // í‘œì¤€ ìž…ì¶œë ¥ ë¼ì´ë¸ŒëŸ¬ë¦¬
-#include <ctime> // ì‹œê°„ ë¼ì´ë¸ŒëŸ¬ë¦¬
+#include <cstdio> // Ç¥ÁØ ÀÔÃâ·Â ¶óÀÌºê·¯¸®
+#include <ctime> // ½Ã°£ ¶óÀÌºê·¯¸®
 
 /**
- * ë¹ ì§„ íŽ˜ì´ì§€ë¥¼ ì¸ì‡„í•˜ê¸° ìœ„í•´ í•„ìš”í•œ ìž‰í¬ì˜ ì–‘ì„ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜
- * @param page ë…¼ë¬¸ì˜ ê° íŽ˜ì´ì§€ ìž¥ìˆ˜ page[0] ~ page[n - 1]
- * @param n    ë…¼ë¬¸ì˜ ë§ˆì§€ë§‰ íŽ˜ì´ì§€ ë²ˆí˜¸
- * @return     ë¹ ì§„ íŽ˜ì´ì§€ë¥¼ ì¸ì‡„í•˜ê¸° ìœ„í•´ í•„ìš”í•œ ìž‰í¬ì˜ ì–‘ì„ ë°˜í™˜
+ * ºüÁø ÆäÀÌÁö¸¦ ÀÎ¼âÇÏ±â À§ÇØ ÇÊ¿äÇÑ À×Å©ÀÇ ¾çÀ» ¹ÝÈ¯ÇÏ´Â ÇÔ¼ö
+ * @param page ³í¹®ÀÇ °¢ ÆäÀÌÁö Àå¼ö page[0] ~ page[n - 1]
+ * @param n    ³í¹®ÀÇ ¸¶Áö¸· ÆäÀÌÁö ¹øÈ£
+ * @return     ºüÁø ÆäÀÌÁö¸¦ ÀÎ¼âÇÏ±â À§ÇØ ÇÊ¿äÇÑ À×Å©ÀÇ ¾çÀ» ¹ÝÈ¯
  */
 int solve(int page[], int n)
 {
-    int inkSum = 0; // í•„ìš”í•œ ìž‰í¬ì˜ ì´í•©
-    int skip = 3; // í˜„ìž¬ íŽ˜ì´ì§€ ì´ì „ì— ì¸ì‡„í•˜ì§€ ì•Šê³  ë„˜ì–´ê°„ íŽ˜ì´ì§€ ìˆ˜
-                  // ìµœì†Œ í•œ ë²ˆ ì´ìƒì€ (5 + 2K) ë§Œí¼ì˜ ìž‰í¬ë¥¼ ì‚¬ìš©í•˜ì—¬ ì¸ì‡„í•˜ë¯€ë¡œ, ë°˜ë³µë¬¸ ì¡°ê±´ì— ë”°ë¼ 3ìœ¼ë¡œ ì´ˆê¸°í™”
+    int inkSum = 0; // ÇÊ¿äÇÑ À×Å©ÀÇ ÃÑÇÕ
+    int skip = 3; // ÇöÀç ÆäÀÌÁö ÀÌÀü¿¡ ÀÎ¼âÇÏÁö ¾Ê°í ³Ñ¾î°£ ÆäÀÌÁö ¼ö
+                  // ÃÖ¼Ò ÇÑ ¹ø ÀÌ»óÀº (5 + 2K) ¸¸Å­ÀÇ À×Å©¸¦ »ç¿ëÇÏ¿© ÀÎ¼âÇÏ¹Ç·Î, ¹Ýº¹¹® Á¶°Ç¿¡ µû¶ó 3À¸·Î ÃÊ±âÈ­
 
-    for (int i = 0; i < n; i++) // ë…¼ë¬¸ì˜ ì²« íŽ˜ì´ì§€ë¶€í„° ë§ˆì§€ë§‰ íŽ˜ì´ì§€ê¹Œì§€ ê° íŽ˜ì´ì§€ ìž¥ìˆ˜ë¥¼ íƒìƒ‰
+    for (int i = 0; i < n; i++) // ³í¹®ÀÇ Ã¹ ÆäÀÌÁöºÎÅÍ ¸¶Áö¸· ÆäÀÌÁö±îÁö °¢ ÆäÀÌÁö Àå¼ö¸¦ Å½»ö
     {
-        if (page[i] == 0) // ë¹ ì§„ íŽ˜ì´ì§€ë¥¼ ë°œê²¬í•  ê²½ìš°, í˜„ìž¬ íŽ˜ì´ì§€ë¥¼ ì¸ì‡„
+        if (page[i] == 0) // ºüÁø ÆäÀÌÁö¸¦ ¹ß°ßÇÒ °æ¿ì, ÇöÀç ÆäÀÌÁö¸¦ ÀÎ¼â
         {
-            inkSum += 2; // ê° íŽ˜ì´ì§€ë¥¼ ì¸ì‡„í•˜ê¸° ìœ„í•´ ê¸°ë³¸ì ìœ¼ë¡œ 2ì˜ ìž‰í¬ê°€ í•„ìš”
-            if (skip >= 3) inkSum += 5; // skipì´ 3 ì´ìƒì´ë©´, ê²©ë¦¬ëœ ì¸ì‡„ ë°©ë²•ì´ ì¢‹ìŒ (ì¶”ê°€ ì¸ì‡„ X)
-                                        // ê²©ë¦¬ëœ ì¸ì‡„ ë°©ë²•ìœ¼ë¡œ í˜„ìž¬ íŽ˜ì´ì§€ë¥¼ ì¸ì‡„í•˜ë¯€ë¡œ, 5ì˜ ìž‰í¬ê°€ ì¶”ê°€ì ìœ¼ë¡œ í•„ìš”
-                                        // (ì²« íŽ˜ì´ì§€ë¥¼ ì¸ì‡„í•˜ê¸° ìœ„í•´ (5 + 2K)ì˜ ìž‰í¬ê°€ í•„ìš”í•˜ê¸° ë•Œë¬¸)
-            else inkSum += skip * 2; // skipì´ 3 ë¯¸ë§Œì´ë©´, ì—°ì†ëœ ì¸ì‡„ ë°©ë²•ì´ ì¢‹ìŒ (ì¶”ê°€ ì¸ì‡„ O)
-                                     // ì—°ì†ì„±ì„ ìœ ì§€í•˜ê¸° ìœ„í•´ ì´ë¯¸ ì¡´ìž¬í•˜ëŠ” íŽ˜ì´ì§€ë¥¼ ì¶”ê°€ ì¸ì‡„í•˜ë¯€ë¡œ, (skip * 2)ì˜ ìž‰í¬ê°€ ì¶”ê°€ì ìœ¼ë¡œ í•„ìš”
-                                     // (ê° íŽ˜ì´ì§€ë¥¼ ì¸ì‡„í•˜ê¸° ìœ„í•´ ê¸°ë³¸ì ìœ¼ë¡œ 2ì˜ ìž‰í¬ê°€ í•„ìš”í•˜ê¸° ë•Œë¬¸)
-            skip = 0; // í˜„ìž¬ íŽ˜ì´ì§€ë¥¼ ì¸ì‡„í•˜ì˜€ìœ¼ë¯€ë¡œ, skipì„ 0ìœ¼ë¡œ ë¦¬ì…‹
+            inkSum += 2; // °¢ ÆäÀÌÁö¸¦ ÀÎ¼âÇÏ±â À§ÇØ ±âº»ÀûÀ¸·Î 2ÀÇ À×Å©°¡ ÇÊ¿ä
+            if (skip >= 3) inkSum += 5; // skipÀÌ 3 ÀÌ»óÀÌ¸é, °Ý¸®µÈ ÀÎ¼â ¹æ¹ýÀÌ ÁÁÀ½ (Ãß°¡ ÀÎ¼â X)
+                                        // °Ý¸®µÈ ÀÎ¼â ¹æ¹ýÀ¸·Î ÇöÀç ÆäÀÌÁö¸¦ ÀÎ¼âÇÏ¹Ç·Î, 5ÀÇ À×Å©°¡ Ãß°¡ÀûÀ¸·Î ÇÊ¿ä
+                                        // (Ã¹ ÆäÀÌÁö¸¦ ÀÎ¼âÇÏ±â À§ÇØ (5 + 2K)ÀÇ À×Å©°¡ ÇÊ¿äÇÏ±â ¶§¹®)
+            else inkSum += skip * 2; // skipÀÌ 3 ¹Ì¸¸ÀÌ¸é, ¿¬¼ÓµÈ ÀÎ¼â ¹æ¹ýÀÌ ÁÁÀ½ (Ãß°¡ ÀÎ¼â O)
+                                     // ¿¬¼Ó¼ºÀ» À¯ÁöÇÏ±â À§ÇØ ÀÌ¹Ì Á¸ÀçÇÏ´Â ÆäÀÌÁö¸¦ Ãß°¡ ÀÎ¼âÇÏ¹Ç·Î, (skip * 2)ÀÇ À×Å©°¡ Ãß°¡ÀûÀ¸·Î ÇÊ¿ä
+                                     // (°¢ ÆäÀÌÁö¸¦ ÀÎ¼âÇÏ±â À§ÇØ ±âº»ÀûÀ¸·Î 2ÀÇ À×Å©°¡ ÇÊ¿äÇÏ±â ¶§¹®)
+            skip = 0; // ÇöÀç ÆäÀÌÁö¸¦ ÀÎ¼âÇÏ¿´À¸¹Ç·Î, skipÀ» 0À¸·Î ¸®¼Â
 
-            // ì˜ˆì‹œ ("."ì€ ë¹ ì§„ íŽ˜ì´ì§€ë¥¼ ì˜ë¯¸)
-            // (1 . 3 -> (5 + 2) + (5 + 2) = 14) > (1 2 3 -> (5 + 6) = 11) -> skipì´ 1ì¼ ê²½ìš°, ì—°ì†ëœ ì¸ì‡„ ë°©ë²•ì´ ì¢‹ìŒ
-            // (1 . . 4 -> (5 + 2) + (5 + 2) = 14) > (1 2 3 4 -> (5 + 8) = 13) -> skipì´ 2ì¼ ê²½ìš°, ì—°ì†ëœ ì¸ì‡„ ë°©ë²•ì´ ì¢‹ìŒ
-            // (1 . . . 5 -> (5 + 2) + (5 + 2) = 14) < (1 2 3 4 5 -> (5 + 10) = 15) -> skipì´ 3ì¼ ê²½ìš°, ê²©ë¦¬ëœ ì¸ì‡„ ë°©ë²•ì´ ì¢‹ìŒ
+            // ¿¹½Ã ("."Àº ºüÁø ÆäÀÌÁö¸¦ ÀÇ¹Ì)
+            // (1 . 3 -> (5 + 2) + (5 + 2) = 14) > (1 2 3 -> (5 + 6) = 11) -> skipÀÌ 1ÀÏ °æ¿ì, ¿¬¼ÓµÈ ÀÎ¼â ¹æ¹ýÀÌ ÁÁÀ½
+            // (1 . . 4 -> (5 + 2) + (5 + 2) = 14) > (1 2 3 4 -> (5 + 8) = 13) -> skipÀÌ 2ÀÏ °æ¿ì, ¿¬¼ÓµÈ ÀÎ¼â ¹æ¹ýÀÌ ÁÁÀ½
+            // (1 . . . 5 -> (5 + 2) + (5 + 2) = 14) < (1 2 3 4 5 -> (5 + 10) = 15) -> skipÀÌ 3ÀÏ °æ¿ì, °Ý¸®µÈ ÀÎ¼â ¹æ¹ýÀÌ ÁÁÀ½
         }
-        else skip++; // ì´ë¯¸ ì¡´ìž¬í•˜ëŠ” íŽ˜ì´ì§€ë¥¼ ë°œê²¬í•  ê²½ìš°, ì¸ì‡„ëŠ” í•˜ì§€ ì•Šê³  skipì„ 1 ì¦ê°€
+        else skip++; // ÀÌ¹Ì Á¸ÀçÇÏ´Â ÆäÀÌÁö¸¦ ¹ß°ßÇÒ °æ¿ì, ÀÎ¼â´Â ÇÏÁö ¾Ê°í skipÀ» 1 Áõ°¡
     }
-    return inkSum; // í•„ìš”í•œ ìž‰í¬ì˜ ì´í•©ì„ ë¦¬í„´
+    return inkSum; // ÇÊ¿äÇÑ À×Å©ÀÇ ÃÑÇÕÀ» ¸®ÅÏ
 }
 
 int main()
 {
-    int n; // ë…¼ë¬¸ì˜ ë§ˆì§€ë§‰ íŽ˜ì´ì§€ ë²ˆí˜¸
-    int m; // ë°”ë‹¥ì— í©ì–´ì§„ ë…¼ë¬¸ì˜ íŽ˜ì´ì§€ ìž¥ìˆ˜
-    int* page; // ë…¼ë¬¸ì˜ ê° íŽ˜ì´ì§€ ìž¥ìˆ˜ë¥¼ ì €ìž¥í•˜ëŠ” ë°°ì—´
-    int* scattered; // ë°”ë‹¥ì— í©ì–´ì§„ ë…¼ë¬¸ì˜ íŽ˜ì´ì§€ ë²ˆí˜¸ë¥¼ ì €ìž¥í•˜ëŠ” ë°°ì—´
+    int n; // ³í¹®ÀÇ ¸¶Áö¸· ÆäÀÌÁö ¹øÈ£
+    int m; // ¹Ù´Ú¿¡ Èð¾îÁø ³í¹®ÀÇ ÆäÀÌÁö Àå¼ö
+    int* page; // ³í¹®ÀÇ °¢ ÆäÀÌÁö Àå¼ö¸¦ ÀúÀåÇÏ´Â ¹è¿­
+    int* scattered; // ¹Ù´Ú¿¡ Èð¾îÁø ³í¹®ÀÇ ÆäÀÌÁö ¹øÈ£¸¦ ÀúÀåÇÏ´Â ¹è¿­
 
     scanf("%d %d", &n, &m);
     page = new int[n];
@@ -53,20 +53,20 @@ int main()
     for (int i = 0; i < m; i++)
         scanf("%d", &scattered[i]);
 
-    clock_t start = clock(); // ì‹œê°„ ì¸¡ì • ì‹œìž‘
+    clock_t start = clock(); // ½Ã°£ ÃøÁ¤ ½ÃÀÛ
 
     for (int i = 0; i < n; i++)
-        page[i] = 0; // ê° íŽ˜ì´ì§€ ìž¥ìˆ˜ë¥¼ 0ìœ¼ë¡œ ì´ˆê¸°í™”
+        page[i] = 0; // °¢ ÆäÀÌÁö Àå¼ö¸¦ 0À¸·Î ÃÊ±âÈ­
     for (int i = 0; i < m; i++)
-        page[scattered[i] - 1]++; // ë°”ë‹¥ì— í©ì–´ì§„ ë…¼ë¬¸ì˜ íŽ˜ì´ì§€ ë²ˆí˜¸ì— í•´ë‹¹í•˜ëŠ” page ë°°ì—´ì˜ ê°’(íŽ˜ì´ì§€ ìž¥ìˆ˜)ë¥¼ 1 ì¦ê°€
-                                  // ì‹¤ì œ ë°°ì—´ì˜ ì¸ë±ìŠ¤ëŠ” 0ë¶€í„° ì‹œìž‘
+        page[scattered[i] - 1]++; // ¹Ù´Ú¿¡ Èð¾îÁø ³í¹®ÀÇ ÆäÀÌÁö ¹øÈ£¿¡ ÇØ´çÇÏ´Â page ¹è¿­ÀÇ °ª(ÆäÀÌÁö Àå¼ö)¸¦ 1 Áõ°¡
+                                  // ½ÇÁ¦ ¹è¿­ÀÇ ÀÎµ¦½º´Â 0ºÎÅÍ ½ÃÀÛ
 
-    int ink = solve(page, n); // í•„ìš”í•œ ìž‰í¬ì˜ ì–‘ì„ ê³„ì‚°
-    printf("%d\n", ink); // í•„ìš”í•œ ìž‰í¬ì˜ ì–‘ì„ ì¶œë ¥
+    int ink = solve(page, n); // ÇÊ¿äÇÑ À×Å©ÀÇ ¾çÀ» °è»ê
+    printf("%d\n", ink); // ÇÊ¿äÇÑ À×Å©ÀÇ ¾çÀ» Ãâ·Â
 
-    clock_t end = clock(); // ì‹œê°„ ì¸¡ì • ì¢…ë£Œ
+    clock_t end = clock(); // ½Ã°£ ÃøÁ¤ Á¾·á
 
-    printf("ì‹¤í–‰ì‹œê°„: %lfì´ˆ\n", (double)(end - start) / CLOCKS_PER_SEC);
+    printf("½ÇÇà½Ã°£: %lfÃÊ\n", (double)(end - start) / CLOCKS_PER_SEC);
 
     delete[] page;
     delete[] scattered;
