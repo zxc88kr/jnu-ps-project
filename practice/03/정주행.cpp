@@ -4,6 +4,12 @@
 
 #include <cstdio>
 
+/**
+ * n개의 배열 원소를 연속적인 정수 수열로 표현할 수 있는지 확인하는 함수
+ * @param data 중복 없는 정수 배열 data[0] ~ data[n - 1]
+ * @param n    배열의 크기
+ * @return 	   n개의 배열 원소를 연속적인 정수 수열로 표현할 수 있으면 true, 그렇지 않으면 false를 반환
+ */
 bool isConsecutive(int data[], int n)
 {
 	int minData = data[0];

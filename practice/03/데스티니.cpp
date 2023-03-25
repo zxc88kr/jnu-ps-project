@@ -6,17 +6,23 @@
 #include <climits>
 #include <cmath>
 
+/**
+ * 두 천체 간의 최단 거리와 그 거리만큼 떨어진 천체 쌍의 수를 출력하는 함수
+ * @param x 천체의 x좌표 배열 x[0] ~ x[n - 1]
+ * @param y 천체의 y좌표 배열 y[0] ~ y[n - 1]
+ * @param n 천체의 수
+ */
 void solve(int x[], int y[], int n)
 {
-	int minDistSquare = INT_MAX;
-	int minCount = 0;
+	int minDistSquare = INT_MAX; // 두 천체 간의 최단 거리 제곱을 int 형식의 최대값으로 초기화
+	int minCount = 0; // 최단 거리만큼 떨어진 천체 쌍의 수
 
 	for (int i = 0; i < n - 1; i++)
 		for (int j = i + 1; j < n; j++)
 		{
 			int xDist = x[j] - x[i];
 			int yDist = y[j] - y[i];
-			int distSquare = (xDist * xDist) + (yDist * yDist);
+			int distSquare = (xDist * xDist) + (yDist * yDist); // 두 천체 간의 거리 제곱
 
 			if (distSquare < minDistSquare)
 			{
