@@ -14,15 +14,15 @@
  */
 void solve(int x[], int y[], int n)
 {
-	int minDistSquare = INT_MAX; // 두 천체 간의 최단 거리 제곱을 int 형식의 최대값으로 초기화
+	int minDistSquare = INT_MAX; // 두 천체 간의 최단 거리의 제곱을 int 형식의 최대값으로 초기화
 	int minCount = 0; // 최단 거리만큼 떨어진 천체 쌍의 수
 
-	for (int i = 0; i < n - 1; i++)
+	for (int i = 0; i < n - 1; i++) // 배열에서 서로 중복되지 않는 순서쌍을 대상으로 탐색
 		for (int j = i + 1; j < n; j++)
 		{
 			int xDist = x[j] - x[i];
 			int yDist = y[j] - y[i];
-			int distSquare = (xDist * xDist) + (yDist * yDist); // 두 천체 간의 거리 제곱
+			int distSquare = (xDist * xDist) + (yDist * yDist); // 두 천체 간의 거리의 제곱
 
 			if (distSquare < minDistSquare)
 			{

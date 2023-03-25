@@ -19,7 +19,7 @@ bool isPrime(int n)
 		if (n % i == 0) // 범위 내에 약수가 존재한다면, 그 숫자는 소수가 아님
 			return false;
 
-	return true;
+	return true; // 범위 내에 약수가 존재하지 않는다면, 그 숫자는 소수가 맞음
 }
 
 int main()

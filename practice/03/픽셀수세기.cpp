@@ -27,18 +27,18 @@ bool isInside(long long x, long long y, long long r)
  */
 long long getPixelInsideOfRound(long long r)
 {
-	long long pixelSum = 0; // 픽셀의 총합, 1사분면의 픽셀을 구한 다음 4를 곱하여 전체 픽셀의 수를 구함
-	long long y = r; // y좌표를 원의 가장 끝인 r로 초기화
+	long long pixelSum = 0; // 픽셀의 총합
+	long long y = r; // y좌표를 원의 가장 끝부분 r로 초기화
 
-	for (long long x = 0; x <= r; x++)
-		for (; y >= 0; y--) // 반복문을 빠져나온 뒤 다시 실행할 때 y를 초기화 하지 않고, 이전 y값을 이어 받음
+	for (long long x = 0; x <= r; x++) // (x: 0 ~> r), (y: r ~> 0)
+		for (; y >= 0; y--) // 반복문을 빠져나온 뒤 다시 실행할 때 y를 초기화 하지 않고, 이전 진행 상황의 y값을 이어 받음
 			if (isInside(x, y, r))
 			{
-				pixelSum += (y + 1); // 왼쪽 아래의 좌표가 원 내부에 있으면, 현재 x좌표의 픽셀 수는 (y + 1)
+				pixelSum += (y + 1); // 픽셀 왼쪽 아래의 좌표가 원 내부에 있으면, 현재의 x좌표의 픽셀 수는 (y + 1)개
 				break;
 			}
 
-	pixelSum *= 4;
+	pixelSum *= 4; // 1사분면만의 픽셀을 구한 다음, 4를 곱하여 전체 픽셀의 수를 구함
 	return pixelSum;
 }
 

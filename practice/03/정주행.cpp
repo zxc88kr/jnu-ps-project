@@ -12,8 +12,8 @@
  */
 bool isConsecutive(int data[], int n)
 {
-	int minData = data[0];
-	int maxData = data[0];
+	int minData = data[0]; // 최소값을 배열의 첫 번째 원소로 초기화
+	int maxData = data[0]; // 최대값을 배열의 첫 번째 원소로 초기화
 
 	for (int i = 1; i < n; i++)
 	{
@@ -21,7 +21,7 @@ bool isConsecutive(int data[], int n)
 		else if (data[i] > maxData) maxData = data[i];
 	}
 
-	if (maxData - minData == n - 1) return true;
+	if (maxData - minData == n - 1) return true; // 중복 없는 정수 배열이므로, 연속적인 정수 수열의 (max - min)의 값은 (n - 1)
 	return false;
 }
 
