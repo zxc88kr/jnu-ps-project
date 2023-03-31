@@ -66,7 +66,7 @@ int main()
     {
         int begin, end, color;
         scanf("%d %d %d", &begin, &end, &color);
-
+        
         // begin 부터 end 까지의 좌석을 color 색상으로 칠함
         for (int idx = begin; idx <= end; idx++)
             seat[idx - 1] = color; // 실제 인덱스는 0부터 시작

@@ -36,7 +36,7 @@ int getFrequentNumber(int data[], int n)
     for (int i = 1; i < MAX_TABLE_LENGTH; i++)
         if (table[i] > table[frequentNumber])
             frequentNumber = i;
-            
+    
     return frequentNumber;
 }
 
@@ -51,7 +51,7 @@ int main()
         scanf("%d", &data[i]);
 
     int answer = getFrequentNumber(data, n);
-    printf("%04d\n", answer); // 전화번호는 0을 포함한 네 자리로 출력
+    printf("%04d\n", answer); // 전화번호 뒷자리는 0을 포함한 네 자리 자연수
 
     delete[] data;
     return 0;

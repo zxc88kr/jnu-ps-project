@@ -8,9 +8,9 @@
 const int MAX_SERIAL_NUMBER = 100000; // 빈도수 테이블의 최대 크기 0 ~ 99999
 
 /**
- * 주어진 배열로부터 각각의 번호에 대한 빈도수 테이블을 생성하는 함수
- * @param data  시리얼 번호 배열 data[0] ~ data[n - 1]
- * @param n     배열의 크기
+ * 주어진 벡터로부터 각각의 번호에 대한 빈도수 테이블을 생성하는 함수
+ * @param data  시리얼 번호 벡터 data[0] ~ data[n - 1]
+ * @param n     벡터의 크기
  * @param table 각각의 번호에 대한 빈도수 테이블 table[0] ~ table[99999]
  */
 void fillFrequencyTable(const std::vector<int>& data, int n, std::vector<int>& table)
@@ -24,10 +24,10 @@ void fillFrequencyTable(const std::vector<int>& data, int n, std::vector<int>& t
 }
 
 /**
- * 주어진 배열의 중복을 제거하고 오름차순으로 정렬한 뒤, 그 배열을 반환하는 함수
- * @param data 시리얼 번호 배열 data[0] ~ data[n - 1]
- * @param n    배열의 크기
- * @return     주어진 배열의 중복을 제거하고 오름차순으로 정렬한 뒤, 그 배열을 반환
+ * 주어진 벡터에서 중복을 제거하고 오름차순으로 정렬한 뒤, 그 벡터를 반환하는 함수
+ * @param data 시리얼 번호 벡터 data[0] ~ data[n - 1]
+ * @param n    벡터의 크기
+ * @return     주어진 벡터에서 중복을 제거하고 오름차순으로 정렬한 뒤, 그 벡터를 반환
  */
 std::vector<int> getUniqueElements(const std::vector<int>& data, int n)
 {
@@ -38,7 +38,7 @@ std::vector<int> getUniqueElements(const std::vector<int>& data, int n)
 
     for (int i = 1; i <= MAX_SERIAL_NUMBER; i++)
         if (table[i] == 1) // 테이블에서 한 번만 등장한 경우
-            answer.push_back(i); // 중복 없는 배열에 원소 추가
+            answer.push_back(i); // 중복 없는 벡터에 원소 추가
 
     return answer;
 }
