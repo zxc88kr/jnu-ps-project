@@ -14,13 +14,13 @@ std::vector<int> factorize(int n)
 {
     std::vector<int> factors; // 소인수 벡터
     
-    for (long long div = 2; div * div <= n; div++) // sqrt(n) 이하의 값을 대상으로 탐색
+    for (long long div = 2; div * div <= n; div++) // 2 ~ sqrt(n) 까지의 값을 대상으로 탐색
         while (n % div == 0) // n이 해당 값으로 나누어지는 경우
         {
             factors.push_back((int)div); // 해당 값을 소인수 벡터에 추가
-            n /= div; // n을 해당 값으로 나눈 다음, 해당 값으로 나누어지지 않을 때까지 반복문 실행
+            n /= div; // n을 해당 값으로 나눈 다음, 해당 값으로 더 이상 나누어지지 않을 때까지 반복문 실행
         }
-    if (n > 1) factors.push_back(n); // 마지막으로 남은 n이 1보다 클 경우 이 값을 소인수 벡터에 추가
+    if (n > 1) factors.push_back(n); // 마지막으로 남은 n이 1보다 클 경우, 이 값을 소인수 벡터에 추가
 
     return factors;
 }

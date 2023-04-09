@@ -54,6 +54,6 @@ int main()
 		printf("Case #%d:\n", idx);
 		printf("%d %d %d\n", row, col, group);
     }
-
+	
     return 0;
 }

@@ -9,7 +9,7 @@ const int MAX_SIZE = 1000000; // 테이블의 최대 크기 1 ~ 1000000
 std::vector<bool> PRIME_TABLE; // 소수 여부를 저장하고 있는 소수 테이블 벡터
 
 /**
- * 1 ~ n 까지의 값을 대상으로 소수를 판별하는 테이블을 반환하는 함수
+ * 1 ~ n 까지의 값을 대상으로 소수를 판별하는 테이블을 생성하는 함수
  * @param n 테이블의 마지막 번호
  * @return  1 ~ n 까지의 값을 대상으로 소수를 판별하는 테이블을 반환
  */
@@ -23,7 +23,7 @@ std::vector<bool> makePrimeTable(int n)
     {
         if (!isPrime[num]) continue; // 해당 값이 소수가 아닐 경우 스킵
 
-        // num * num ~ n 까지 num의 배수를 대상으로 탐색
+        // num^2 ~ n 까지 num의 배수를 대상으로 탐색
         // 예시 (num = 3, n = 20)
         // 9, 12, 15, 18 을 대상으로 탐색
         for (long long mul = (long long)num * num; mul <= n; mul += num)
@@ -34,7 +34,7 @@ std::vector<bool> makePrimeTable(int n)
 
 int main()
 {
-    PRIME_TABLE = makePrimeTable(MAX_SIZE); // 프라임 테이블 생성
+    PRIME_TABLE = makePrimeTable(MAX_SIZE); // 소수 테이블 생성
 
     int t;
     scanf("%d", &t);
@@ -45,7 +45,7 @@ int main()
         scanf("%d %d", &l, &r);
 
         int primeNumberCount = 0; // 소수의 개수를 0으로 초기화
-        for (int num = l; num <= r; num++) // l부터 r까지의 값을 대상으로 탐색
+        for (int num = l; num <= r; num++) // l ~ r 까지의 값을 대상으로 탐색
             if (PRIME_TABLE[num]) // 해당 값이 소수인 경우
                 primeNumberCount++; // 소수의 개수를 1씩 증가
 
