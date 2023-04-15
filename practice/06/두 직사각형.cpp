@@ -57,6 +57,6 @@ int main()
         int answer = getOverlapArea(lA, rA, bA, tA, lB, rB, bB, tB); // 두 직사각형이 교차하는 영역의 넓이
         printf("%d\n", answer);
     }
-
+    
     return 0;
 }

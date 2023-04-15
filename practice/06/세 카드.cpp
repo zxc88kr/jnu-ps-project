@@ -33,7 +33,7 @@ std::vector<int> getPossibleTargets(int n, int m, std::vector<int>& cards, std::
                 int y = cards[j]; // 두 번째 카드
                 int z = target - x - y; // 세 번째 카드
 
-                // z가 card에서 발견되는 경우 x + y + z == target
+                // 세 번째 카드가 카드 벡터에서 발견되는 경우, x + y + z == target
                 if (std::binary_search(cards.begin(), cards.end(), z))
                 {
                     possible = true; // 타겟을 만들 수 있으면 첫 번째 반복문까지 빠져나옴
