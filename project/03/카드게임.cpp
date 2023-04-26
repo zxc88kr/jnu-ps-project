@@ -1,3 +1,7 @@
+// 문제해결프로젝트 프로젝트 03 (1)
+// 학번 : 195443
+// 이름 : 박찬
+
 #include <cstdio>
 #include <vector>
 
