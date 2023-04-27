@@ -21,7 +21,7 @@ int getLongestPerimeter(int n, std::vector<int>& shortSide, std::vector<int>& lo
 	std::vector<int> lastLiePerimeter(n); // 마지막으로 놓인 사각형이 누워있을 때 가장 길어지는 위쪽 둘레의 길이
 	lastStandPerimeter[0] = shortSide[0]; // 사각형 하나가 서있으므로 위쪽 둘레는 짧은 변의 길이
 	lastLiePerimeter[0] = longSide[0]; // 사각형 하나가 누워있으므로 위쪽 둘레는 긴 변의 길이
-
+	
 	for (int i = 1; i < n; i++)
 	{
 		int previousShort = shortSide[i - 1]; // 이전에 놓인 사각형의 짧은 변의 길이

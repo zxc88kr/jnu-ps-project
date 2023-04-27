@@ -24,18 +24,18 @@ int getMaximumScore(int a, int b, std::vector<int>& cardA, std::vector<int>& car
 
 		int idxA = 0; // 첫 번째 카드 더미는 첫 카드부터 비교 시작
 		int idxB = beginB; // 두 번째 카드 더미는 위에서 버린 카드들 다음 카드부터 비교 시작
-		int match = 0; // 비교 결과 두 카드의 숫자가 동일하면 값을 1 증가
+		int matchScore = 0; // 비교 결과 두 카드의 숫자가 동일하면 값을 1 증가
 
 		while (idxA < a && idxB < b) // 두 카드 더미 중 어느 하나라도 탐색이 끝나면 비교 종료
 		{
 			if (cardA[idxA] == cardB[idxB]) // 두 카드의 숫자가 동일한 경우
 			{
 				idxB++; // 두 번째 카드 더미의 다음 카드를 탐색
-				match++; // match 값을 1 증가
+				matchScore++; // matchScore 값을 1 증가
 			}
 			idxA++; // 첫 번째 카드 더미의 다음 카드를 탐색
 		}
-		maximumScore = ((match > maximumScore) ? match : maximumScore); // 최대 점수 업데이트
+		maximumScore = ((matchScore > maximumScore) ? matchScore : maximumScore); // 최대 점수 업데이트
 	}
 	return maximumScore; // 최대 점수 반환
 
@@ -44,6 +44,7 @@ int getMaximumScore(int a, int b, std::vector<int>& cardA, std::vector<int>& car
 	// (두 번째 반복문: 1번째 인덱스부터 시작) -> (5), (5 4), (5 4 2) 순으로 탐색 -> (5 4) 일치 -> 최대 점수 2
     // (세 번째 반복문: 2번째 인덱스부터 시작) -> (4), (4 2) 순으로 탐색 -> (4 2) 일치 -> 최대 점수 2
 	// (네 번째 반복문: 3번째 인덱스부터 시작) -> (2) 순으로 탐색 -> (2) 일치 -> 최대 점수 1
+	// break 조건문에 따라 두 번째 반복문부터는 수행되지 않음
 }
 
 int main()
