@@ -14,9 +14,9 @@
  * @param cardB 두 번째 카드 더미 벡터 cardB[0] ~ cardB[b - 1]
  * @return		주어진 두 카드 더미로 게임을 했을 때 얻을 수 있는 최대 점수를 반환
  */
-int getMaxScore(int a, int b, std::vector<int>& cardA, std::vector<int>& cardB)
+int getMaximumScore(int a, int b, std::vector<int>& cardA, std::vector<int>& cardB)
 {
-	int maxScore = 0; // 얻을 수 있는 최대 점수를 0으로 초기화
+	int maximumScore = 0; // 얻을 수 있는 최대 점수를 0으로 초기화
 	for (int beginB = 0; beginB < b; beginB++) // 두 번째 카드 더미를 기준으로 비교 진행, 카드 더미 위에서 버릴 카드 수를 구함
 	{
 		int idxA = 0; // 첫 번째 카드 더미는 첫 카드부터 비교 시작
@@ -32,9 +32,9 @@ int getMaxScore(int a, int b, std::vector<int>& cardA, std::vector<int>& cardB)
 			}
 			idxA++; // 첫 번째 카드 더미의 다음 카드를 탐색
 		}
-		maxScore = ((match > maxScore) ? match : maxScore); // 최대 점수 업데이트
+		maximumScore = ((match > maximumScore) ? match : maximumScore); // 최대 점수 업데이트
 	}
-	return maxScore; // 최대 점수 반환
+	return maximumScore; // 최대 점수 반환
 }
 
 int main()
@@ -52,8 +52,8 @@ int main()
 
 	clock_t start = clock(); // 시간 측정 시작
 	
-	int maxScore = getMaxScore(a, b, cardA, cardB);
-	printf("%d\n", maxScore);
+	int maximumScore = getMaximumScore(a, b, cardA, cardB);
+	printf("%d\n", maximumScore);
 
 	clock_t end = clock(); // 시간 측정 종료
 
