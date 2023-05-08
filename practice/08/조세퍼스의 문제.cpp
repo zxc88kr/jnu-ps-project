@@ -24,7 +24,7 @@ std::vector<int> getDeadPlayers(int n, int m)
     {
         int skip = m - 1; // m - 1 명의 사람을 건너뛰고 그 다음 사람을 게임에서 제외시킴
 
-        // 건너뛴 사람은 우선 큐에서 pop 한 다음, 큐의 마지막 대기열로 다시 push
+        // 건너뛴 사람의 경우 큐에서 pop 한 다음, 큐의 마지막 대기열로 다시 push
         while (skip > 0)
         {
             int skipPlayer = players.front();
@@ -33,7 +33,7 @@ std::vector<int> getDeadPlayers(int n, int m)
             skip--;
         }
 
-        // 제외되는 사람은 우선 큐에서 pop 한 다음, 제외되는 사람 순서 벡터에 push
+        // 제외되는 사람의 경우 큐에서 pop 한 다음, 제외되는 사람 순서 벡터에 push
         int deadPlayer = players.front();
         players.pop();
         deadPlayers.push_back(deadPlayer);
