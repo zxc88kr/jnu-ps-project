@@ -25,7 +25,7 @@ struct Point2D
 		return dx * dx + dy * dy;
 	}
 
-	// 연산자 오버로딩 (x 좌표와 y 좌표 순서 기준으로 대소비교)
+	// 연산자 오버로딩 (x 좌표와 y 좌표를 기준으로 대소비교, x좌표 -> y좌표 순서)
 	friend bool operator<(const Point2D& a, const Point2D& b)
 	{
 		if (a.x != b.x) return a.x < b.x;
@@ -39,14 +39,14 @@ struct Point2D
 };
 
 /**
- * 주어진 점들 중 4개를 골라 만들 수 있는 정사각형들 중 가장 큰 넓이를 반환하는 함수
- * @param n      점의 수
+ * 주어진 점들 중 4개를 골라 만들 수 있는 정사각형의 가장 큰 넓이를 반환하는 함수
+ * @param n      점의 좌표의 수
  * @param points 점 구조체 벡터 points[0] ~ points[n - 1]
- * @return       주어진 점들 중 4개를 골라 만들 수 있는 정사각형들 중 가장 큰 넓이를 반환
+ * @return       주어진 점들 중 4개를 골라 만들 수 있는 정사각형의 가장 큰 넓이를 반환
  */
 long long getMaximumSquareArea(int n, std::vector<Point2D>& points)
 {
-	long long maximumSquareArea = 0; // 만들 수 있는 정사각형들 중 가장 큰 넓이
+	long long maximumSquareArea = 0; // 만들 수 있는 정사각형의 가장 큰 넓이를 0으로 초기화
 
 	std::set<Point2D> pSet; // 사용자가 입력한 점의 좌표를 저장하는 Set
 	for (int i = 0; i < n; i++)
