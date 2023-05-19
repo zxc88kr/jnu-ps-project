@@ -42,6 +42,13 @@ long long getSumFrisbeeDistance(std::vector<std::pair<int, int>>& cows, int n)
         stackCow.push(cows[i]); // 현재 탐색 중인 소의 pair를 스택에 push
     }
     return sumFrisbeeDistance;
+
+	// 예시 (n = 4, 입력은 (4 3 1 5) 라고 가정)
+	// (첫 번째 반복문) -> 스택에 (4) push
+	// (두 번째 반복문) -> 위치 쌍 (1 2) -> 스택에 (3) push
+	// (세 번째 반복문) -> 위치 쌍 (2 3) -> 스택에 (1) push
+	// (네 번째 반복문) -> 위치 쌍 (3 4) -> 탑 (1) pop -> 위치 쌍 (2 4) -> 탑 (3) pop -> 위치 쌍 (1 4) -> 탑 (4) pop -> 스택에 (5) push
+	// 반복문 종료: sumFrisbeeDistance = (2 - 1 + 1) + (3 - 2 + 1) + (4 - 3 + 1) + (4 - 2 + 1) + (4 - 1 + 1) = 13
 }
 
 int main()
