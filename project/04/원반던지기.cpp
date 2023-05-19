@@ -1,32 +1,48 @@
 #include <cstdio>
-#include <stack>
+#include <vector>
 #include <utility>
+#include <stack>
+#include <ctime>
+
+long long getSumFrisbeeDistance(std::vector<std::pair<int, int>>& cows, int n)
+{
+    std::stack<std::pair<int, int>> stackCow;
+    long long sumFrisbeeDistance = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        while (!stackCow.empty())
+        {
+            sumFrisbeeDistance += (cows[i].second - stackCow.top().second + 1);
+
+            if (stackCow.top().first < cows[i].first) stackCow.pop();
+            else break;
+        }
+        stackCow.push(cows[i]);
+    }
+    return sumFrisbeeDistance;
+}
 
 int main()
 {
     int n;
     scanf("%d", &n);
 
-    long long total = 0;
-    std::stack<std::pair<int, int>> st;
-
+    std::vector<std::pair<int, int>> cows(n);
     for (int i = 0; i < n; i++)
     {
-        std::pair<int, int> cow;
-
-        scanf("%d", &cow.first);
-        cow.second = i;
-
-        while (!st.empty())
-        {
-            total += (cow.second - st.top().second + 1);
-
-            if (st.top().first < cow.first) st.pop();
-            else break;
-        }
-        st.push(cow);
+        scanf("%d", &cows[i].first);
+        cows[i].second = i + 1;
     }
-    printf("%lld\n", total);
+
+    clock_t start = clock();
+
+    long long sumFrisbeeDistance = getSumFrisbeeDistance(cows, n);
+    printf("%lld\n", sumFrisbeeDistance);
+
+    clock_t end = clock();
+
+    printf("실행시간: %lf초\n", (double)(end - start) / CLOCKS_PER_SEC);
 
     return 0;
 }

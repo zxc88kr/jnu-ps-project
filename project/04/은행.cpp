@@ -3,12 +3,36 @@
 #include <utility>
 #include <queue>
 #include <algorithm>
+#include <ctime>
 
-bool comparePair(const std::pair<int, int>& a, const std::pair<int, int>& b)
+bool compareCustomer(const std::pair<int, int>& a, const std::pair<int, int>& b)
 {
     if (a.first == b.first)
         return a.second > b.second;
     return a.first > b.first;
+}
+
+int getMaximumAmount(std::vector<std::pair<int, int>>& customers, int n, int t)
+{
+    std::priority_queue<int, std::vector<int>, std::less<int>> availableAmount;
+    int maximumAmount = 0;
+    int idx = 0;
+
+    for (int waiting = t - 1; waiting >= 0; waiting--)
+    {
+        while (idx < n && customers[idx].first == waiting)
+        {
+            availableAmount.push(customers[idx].second);
+            idx++;
+        }
+
+        if (!availableAmount.empty())
+        {
+            maximumAmount += availableAmount.top();
+            availableAmount.pop();
+        }
+    }
+    return maximumAmount;
 }
 
 int main()
@@ -16,33 +40,20 @@ int main()
     int n, t;
     scanf("%d %d", &n, &t);
 
-    std::vector<std::pair<int, int>> people(n);
-
+    std::vector<std::pair<int, int>> customers(n);
     for (int i = 0; i < n; i++)
-        scanf("%d %d", &people[i].second, &people[i].first);
-        
-    std::sort(people.begin(), people.end(), comparePair);
+        scanf("%d %d", &customers[i].second, &customers[i].first);
 
-    std::priority_queue<int, std::vector<int>, std::less<int>> availAmount;
+    clock_t start = clock();
+    
+    std::sort(customers.begin(), customers.end(), compareCustomer);
 
-    int totalAmount = 0;
-    int idx = 0;
+    int maximumAmount = getMaximumAmount(customers, n, t);
+    printf("%d\n", maximumAmount);
 
-    for (int i = t - 1; i >= 0; i--)
-    {
-        while (idx < n && people[idx].first == i)
-        {
-            availAmount.push(people[idx].second);
-            idx++;
-        }
+    clock_t end = clock();
 
-        if (!availAmount.empty())
-        {
-            totalAmount += availAmount.top();
-            availAmount.pop();
-        }
-    }
-    printf("%d\n", totalAmount);
+    printf("실행시간: %lf초\n", (double)(end - start) / CLOCKS_PER_SEC);
 
     return 0;
 }
