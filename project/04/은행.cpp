@@ -37,10 +37,10 @@ int getMaximumAmount(std::vector<std::pair<int, int>>& customers, int n, int t)
     int maximumAmount = 0; // 받을 수 있는 최대 금액을 0으로 초기화
     int idx = 0; // 우선순위 큐에 고객의 금액을 하나 push 할 때마다 idx 값을 1씩 증가
 
-    for (int waiting = t - 1; waiting >= 0; waiting--) // 대기 시간이 가장 많이 남아 있는 고객부터 탐색
+    for (int waiting = t - 1; waiting >= 0; waiting--) // 최대 대기 시간이 가장 긴 고객부터 탐색
     {
-        // 우선순위 큐에 push 되지 않은 고객이 아직 남아 있는 경우
-        // 현재 탐색하고 있는 대기 시간에 해당하는 고객의 금액을 전부 push
+        // 우선순위 큐에 아직 push 되지 않은 고객이 남아 있는 경우
+        // 현재 탐색하고 있는 최대 대기 시간에 해당하는 고객의 금액을 전부 우선순위 큐에 push
         while (idx < n && customers[idx].first == waiting)
         {
             availableAmount.push(customers[idx].second);
@@ -48,7 +48,8 @@ int getMaximumAmount(std::vector<std::pair<int, int>>& customers, int n, int t)
         }
 
         // 우선순위 큐에 값이 존재하는 경우
-        // 우선순위 큐에서 금액이 가장 큰 고객 한 명만을 처리하고, 해당하는 금액을 우선순위 큐에서 pop
+        // 우선순위 큐에서 가장 큰 금액 하나만을 처리하고, 해당 금액을 우선순위 큐에서 pop
+        // 최대 대기 시간이 짧은 고객을 우선적으로 처리하는 것이 아니라, 기회비용까지 종합적으로 계산하여 고객을 처리
         if (!availableAmount.empty())
         {
             maximumAmount += availableAmount.top();
@@ -64,12 +65,12 @@ int main()
     scanf("%d %d", &n, &t);
 
     std::vector<std::pair<int, int>> customers(n);
-    for (int i = 0; i < n; i++) // 대기 시간을 first, 금액을 second로 입력 받음
+    for (int i = 0; i < n; i++) // 최대 대기 시간을 first, 금액을 second로 입력 받음
         scanf("%d %d", &customers[i].second, &customers[i].first);
 
     clock_t start = clock(); // 시간 측정 시작
     
-    // 대기 시간을 기준으로 내림차순 정렬, 대기 시간이 같다면 금액을 기준으로 내림차순 정렬
+    // 최대 대기 시간을 기준으로 내림차순 정렬, 최대 대기 시간이 같다면 금액을 기준으로 내림차순 정렬
     std::sort(customers.begin(), customers.end(), compareCustomer);
 
     int maximumAmount = getMaximumAmount(customers, n, t);

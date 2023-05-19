@@ -16,7 +16,7 @@
  */
 long long getSumFrisbeeDistance(std::vector<std::pair<int, int>>& cows, int n)
 {
-    std::stack<std::pair<int, int>> stackCow; // 소의 pair를 저장하는 스택
+    std::stack<std::pair<int, int>> stackCow; // 소의 pair들을 저장하는 스택
 
     long long sumFrisbeeDistance = 0; // 모든 위치 쌍의 거리의 합을 0으로 초기화
 
@@ -28,13 +28,14 @@ long long getSumFrisbeeDistance(std::vector<std::pair<int, int>>& cows, int n)
             sumFrisbeeDistance += (cows[i].second - stackCow.top().second + 1);
 
             // 현재 탐색 중인 소의 키가 스택의 탑에 있는 소의 키보다 큰 경우
-            // 스택의 탑을 하나 pop하고 반복문을 다시 진행
+            // 스택의 탑을 하나 pop 하고 반복문을 다시 진행
             // 그게 아니라면, 반복문을 종료하고 빠져나옴
+            //
             // 스택의 탑에 있는 소를 i, 현재 탐색 중인 소를 j라고 했을 때,
-            // 스택의 탑을 pop 한다는 의미는 새로운 i가 정의되고,
-            // 기존의 i는 새로운 i와 j 사이에 위치한 소가 되므로,
-            // 기존의 i의 키 < j의 키인 경우, 원반 던지기가 가능하지만,
-            // 그 반대의 경우, 원반 던지기가 불가능
+            // 스택의 탑을 pop 하게 되면, 새로운 i가 정의되고,
+            // 새로운 i와 j 사이에 기존의 i가 위치하게 됨
+            // 따라서, 기존의 i의 키 < j의 키인 경우, 원반 던지기가 가능하지만,
+            // 그 반대의 경우, 기존의 i가 중간에 방해되므로 원반 던지기가 불가능
             if (stackCow.top().first < cows[i].first) stackCow.pop();
             else break;
         }
