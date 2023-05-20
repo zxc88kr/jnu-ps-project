@@ -5,7 +5,7 @@
     "echoCommand": true,
     "presentation" : { "reveal": "always" },
     "tasks": [
-        //C 컴파일
+        // C 컴파일
         {
             "label": "save and compile for C",
             "command": "gcc",
@@ -16,7 +16,7 @@
             ],
             "group": "build",
 
-            //컴파일시 에러를 편집기에 반영
+            // 컴파일시 에러를 편집기에 반영
             "problemMatcher": {
                 "fileLocation": [
                     "relative",
@@ -32,7 +32,7 @@
                 }
             }
         },
-        //C++ 컴파일
+        // C++ 컴파일
         {
             "label": "save and compile for C++",
             "command": "g++",
@@ -43,7 +43,7 @@
             ],
             "group": "build",
 
-            //컴파일시 에러를 편집기에 반영
+            // 컴파일시 에러를 편집기에 반영
             "problemMatcher": {
                 "fileLocation": [
                     "relative",
@@ -59,7 +59,7 @@
                 }
             }
         },
-        //바이너리 실행(Windows)
+        // 바이너리 실행 (Windows)
         {
             "label": "execute",
             "command": "cmd",
