@@ -35,7 +35,7 @@ int getMaximumAmount(std::vector<std::pair<int, int>>& customers, int n, int t)
     std::priority_queue<int, std::vector<int>, std::less<int>> availableAmount;
 
     int maximumAmount = 0; // 받을 수 있는 최대 금액을 0으로 초기화
-    int idx = 0; // 우선순위 큐에 고객의 금액을 하나 push 할 때마다 idx 값을 1씩 증가
+    int idx = 0; // 우선순위 큐에 고객의 금액을 하나씩 push 할 때마다 idx 값을 1씩 증가
 
     for (int waiting = t - 1; waiting >= 0; waiting--) // 최대 대기 시간이 가장 긴 고객부터 탐색
     {
