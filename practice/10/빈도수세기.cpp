@@ -20,9 +20,9 @@ int main()
 		if (frequencyMap.count(num) == 0) // 사용자가 입력한 숫자가 처음 등장하는 숫자인 경우
 			frequencyMap[num] = 0; // 빈도수를 0으로 초기화
 		frequencyMap[num]++; // 사용자가 입력한 숫자의 빈도수를 1 증가
-	
+
 		printf("%d %d\n", frequencyMap.size(), frequencyMap[num]); // 현재까지의 숫자 종류의 개수와 현재 숫자의 빈도수를 출력
 	}
-
+	
 	return 0;
 }

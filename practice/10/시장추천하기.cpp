@@ -12,7 +12,7 @@ int main()
 	std::cin >> n;
 
 	std::map<std::string, int> frequencyMap; // 후보자들의 등장 빈도수를 저장하는 맵
-	int maxFrequency = 0;
+	int maxFrequency = 0; // 후보자들의 최대 등장 빈도수를 0으로 초기화
 
 	for (int i = 0; i < n; i++)
 	{
@@ -27,7 +27,7 @@ int main()
 		maxFrequency = ((frequency > maxFrequency) ? frequency : maxFrequency); // 현재 후보자의 빈도수를 기준으로 최대 빈도수 업데이트
 	}
 
-	std::cout << maxFrequency << '\n'; // 최대 빈도수
+	std::cout << maxFrequency << '\n'; // 최대 빈도수 출력
 	for (auto it = frequencyMap.begin(); it != frequencyMap.end(); it++)
 		if (it->second == maxFrequency) // 최대 빈도수에 해당하는 후보자들을 공백으로 구분하여 출력
 			std::cout << it->first.c_str() << ' ';
