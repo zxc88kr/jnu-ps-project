@@ -17,7 +17,7 @@ void dfs(int v)
 {
 	printf("%d\n", v); // 현재 노드를 출력
 	visited[v] = true; // 현재 노드의 방문 여부를 true로 체크
-
+	
 	// 연결된 노드들 중에서 아직 방문하지 않은 노드들을 재귀적으로 탐색
 	for (int i = 1; i <= MAX_DEPTH; i++)
 		if (connected[v][i] && !visited[i])
