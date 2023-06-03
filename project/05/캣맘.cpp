@@ -11,7 +11,7 @@
 const int MAX = 16; // 고양이의 최대 마리 수
 const int INF = 1e9; // int 정수형의 최대값을 대략적으로 표현 (min 함수 사용 목적)
 
-int N; // 고양이의 수
+int n; // 고양이의 수
 int x[MAX + 1], y[MAX + 1]; // 고양이의 x, y 위치 좌표
 int dp[MAX + 1][1 << (MAX + 1)]; // 최소 시간을 구하기 위한 2차원 배열 (DP 알고리즘)
 
@@ -29,16 +29,15 @@ int getMinimumTimeFeedingCats(int current, int visited)
 	if (ret != -1) return ret;
 	else ret = INF;
 
-	// 모든 고양이에게 배식이 완료된 경우, 마지막으로 배식한 고양이의 좌표를 구함
-	// 첫 번째 고양이부터 배식한다는 보장이 없음
-	if (visited == (1 << (N + 1)) - 1)
+	// 모든 고양이에게 배식을 한 뒤 교문으로 되돌아감
+	if (visited == (1 << (n + 1)) - 1)
 	{
 		ret = x[current] + y[current];
 		return ret;
 	}
 	
 	// 모든 고양이를 대상으로 배식을 진행, 순서는 정해지지 않음
-	for (int next = 1; next <= N; next++)
+	for (int next = 1; next <= n; next++)
 	{
 		// 배식이 완료된 고양이는 다시 배식하지 않음
 		if ((visited & (1 << next)) > 0) continue;
@@ -54,8 +53,8 @@ int getMinimumTimeFeedingCats(int current, int visited)
 
 int main()
 {
-	scanf("%d", &N);
-	for (int i = 1; i <= N; i++)
+	scanf("%d", &n);
+	for (int i = 1; i <= n; i++)
 		scanf("%d %d", &x[i], &y[i]);
 
 	clock_t start = clock(); // 시간 측정 시작
