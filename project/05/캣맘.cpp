@@ -23,18 +23,15 @@ int dp[MAX + 1][1 << (MAX + 1)]; // 최소 시간을 구하기 위한 2차원 �
  */
 int getMinimumTimeFeedingCats(int current, int visited)
 {
-	int& ret = dp[current][visited]; // 2차원 DP 배열에 대한 별칭을 설정
+	int& ret = dp[current][visited]; // 2차원 DP 배열에 대한 레퍼런스를 설정
 
-	// ret가 사용된 적 없는 경우, ret를 INF로 초기화
-	if (ret != -1) return ret;
-	else ret = INF;
+	// ret가 참조된 적 없는 경우, ret를 INF로 초기화
+	if (ret == -1) ret = INF;
+	else 		   return ret;
 
-	// 모든 고양이에게 배식을 한 뒤 교문으로 되돌아감
+	// 모든 고양이에게 배식을 하고 난 뒤 교문으로 되돌아감
 	if (visited == (1 << (n + 1)) - 1)
-	{
-		ret = x[current] + y[current];
-		return ret;
-	}
+		return x[current] + y[current];
 	
 	// 모든 고양이를 대상으로 배식을 진행, 순서는 정해지지 않음
 	for (int next = 1; next <= n; next++)
@@ -42,7 +39,7 @@ int getMinimumTimeFeedingCats(int current, int visited)
 		// 배식이 완료된 고양이는 다시 배식하지 않음
 		if ((visited & (1 << next)) > 0) continue;
 
-		// visited 값에 next 비트를 추가하여 재귀적으로 탐색
+		// visited 값에 next 비트를 추가하여 재귀적으로 호출
 		int temp = getMinimumTimeFeedingCats(next, visited | (1 << next)) +
 				   std::abs(x[next] - x[current]) + std::abs(y[next] - y[current]);
 		ret = std::min(temp, ret);
